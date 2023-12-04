@@ -1,0 +1,72 @@
+<head>
+	<title>lapetus</title>
+    <link rel="icon" type="image/x-icon" href="">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="../kit.fontawesome.com/8d2a52b7b7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="black-screen"></div>
+  <button id="hide-black-screen">enter</button>
+    <div class="top-links">
+        <a href="https://https://discord.gg/kY2mtzqw2n" class="link-home">discord</a>
+
+      </div>
+	<div class="container">
+        <div class="bio-container">
+            <div class="bio-container">
+                <p id="bio"></p>
+              </div>
+          </div>
+		<div class="discord">
+
+</html>
+
+<script>
+    const bios = ["doxbin.net/user/religion","doxbin.net/user/nexuslol","doxbin.net/user/isismothfucka","doxbin.net/user/idontfeelgrief","doxbin.net/user/causedeath"];
+    const bioContainer = document.querySelector('.bio-container');
+    let currentBioIndex = 0;
+    
+    function typeBio(bio) {
+      let i = 0;
+      const intervalId = setInterval(() => {
+        bioContainer.innerHTML = bio.substring(0, i) + '|';
+        i++;
+        if (i > bio.length) {
+          clearInterval(intervalId);
+          setTimeout(() => {
+            deleteBio(bio);
+          }, 1000);
+        }
+      }, 100);
+    }
+    
+    function deleteBio(bio) {
+      let i = bio.length;
+      const intervalId = setInterval(() => {
+        bioContainer.innerHTML = bio.substring(0, i) + '|';
+        i--;
+        if (i < 0) {
+          clearInterval(intervalId);
+          currentBioIndex++;
+          if (currentBioIndex >= bios.length) {
+            currentBioIndex = 0;
+          }
+          setTimeout(() => {
+            typeBio(bios[currentBioIndex]);
+          }, 1000);
+        }
+      }, 100);
+    }
+    
+    typeBio(bios[currentBioIndex]);
+    </script>
+<script>
+const hideBlackScreenButton = document.querySelector('#hide-black-screen');
+const audio = new Audio('');
+
+hideBlackScreenButton.addEventListener('click', () => {
+  hideBlackScreenButton.style.display = 'none';
+  document.querySelector('#black-screen').style.display = 'none';
+  audio.play();
+});
+</script>
